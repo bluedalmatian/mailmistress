@@ -1,0 +1,38 @@
+TO DO:
+======
+
+TARGET			RESULTING			TASK
+DATE			VERSION NO
+======================================================
+				
+				0.8.6				Optional footer added to each OG msg (need to add content-type header if multipart
+				0.8.7				Tidy up From header to include name if possible
+				0.8.8				Intermittently sends out 2 copies of each message to every recipient (not every, just some) - why?
+				0.9.0				Use Pulse() to check an app wide map of authprog thread_ids/timestamps to send KILL sig to ones running > 3min
+				2.0.0				B_BACKGROUND_APP flag set  & Integration with ServiceKit
+
+
+
+CHANGELOG OF THINGS DONE
+==================
+
+VERSION NO		DATE DONE			CHANGES/FEATURES
+======================================================
+0.4.0			23/1/2013			Start of Re-architecture ready for mulltithreaded MailWorkers
+0.4.1			12/2/2013			Multi-threaded MailWorkers working fine
+0.4.2			12/2/2013			Implemented QuitRequested() in MailMistressApplication to call MailWorker->Quit() which gracefully quits workers
+0.4.3			12/2/2013			modified LogError() to lock file using a sem so it can work multithreaded
+0.4.4			16/2/2013			debugging of access to incoming email file, working but strange bug where sometimes 1st attempt cant open file
+0.4.5			17/2/2013			fixed strange bug with failing to open ic email file
+0.5.0			11/5/2014			use modified MailKit to set OG envelope address independly from From: header, ready for production use testing with CMT
+0.5.1			11/5/2014			implemented optional SUBJECTPREFIX in <LIST> section of conf file
+0.5.2			12/5/2014			LogError() modified to use BAlert for critical warnings when log file not yet opened so user doesnt have to run from CLI to see whats wrong
+0.6.0			13/5/2014			Use rdef script to set resources at compile time resulting in icon, version, descrip &  B_SINGLE_LAUNCH. B_BACKGROUND_APP deferred until Service Manager developed
+0.6.1			10/6/2014			Updated to new MailKit API, put into service for Comms Trust
+0.7.0			4/11/2014			Groundwork for new foolproof method of checking for attachments and allowing (if enabled) HTML email, Code clean up, printf, old comments etc cleaned out. Dev doc produced, Remove Cc & Bcc fields if present								
+0.8.0			6/11/2014			Re-architecture - implemented IncomingMail class rather than having everything done in MailingList class. Now properly deals with folded headers 
+0.8.1			7/11/2014			New foolproof method of checking for attachments and allowing (if enabled) HTML email perfected,
+0.8.2			12/11/2014			UTF8 problem fixed - problem was bug in Haiku Mail Kit corruping folded Content-Type headers, now they are unfolded by MailMistress!
+0.8.3 			17/11/2014			Continue Code clean up, printf, old comments etc cleaned out. Adds List-Post header
+0.8.4			17/11/2014			Added FORCEREPLYTOLIST as optional directive in <LIST> section to cause or prevent reply-to munging as desired 
+0.8.5			19/11/2014			Optional <LIST> directives to add List-Help, List-Archive, List-Owner, List-Subscribe & List-Unsubscribe headers if present
